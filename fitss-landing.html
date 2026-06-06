@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FITSS — Premium Streetwear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --page: #f5f5f3;
+      --black: #000;
+      --text: #1a1a1a;
+      --muted: #7a7a76;
+      --cream-card: #efede6;
+      --cream-img: #dbd6cc;
+      --max-w: 72rem;
+      --radius: 1.75rem;
+    }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--page);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 0;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+    @media (min-width: 768px) { .wrap { padding: 0 2rem; } }
+
+    /* Announcement */
+    .announce {
+      background: #151515;
+      padding: 0.45rem 1rem;
+      text-align: center;
+    }
+    .announce p {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
+    @media (min-width: 640px) { .announce p { font-size: 10px; } }
+
+    /* Header */
+    .header {
+      padding: 1rem 0 0.75rem;
+    }
+    .header__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .header__left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+      min-width: 0;
+    }
+    .menu-btn { display: inline-flex; padding: 0.2rem; color: var(--text); }
+    .menu-btn svg { width: 17px; height: 17px; }
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+    .nav-links a {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(26,26,26,0.82);
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+    .logo__f { font-size: 1.4rem; font-weight: 700; }
+    .logo__text {
+      margin-top: 2px;
+      font-size: 9px;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+    }
+    .header__right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.85rem;
+      flex: 1;
+    }
+    .icon-btn {
+      position: relative;
+      display: inline-flex;
+      padding: 0.2rem;
+    }
+    .icon-btn svg { width: 16px; height: 16px; }
+    .badge {
+      position: absolute;
+      top: -5px;
+      right: -7px;
+      min-width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--black);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Section head */
+    .sec-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.1rem;
+    }
+    .sec-head h2 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .sec-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .sec-link svg { width: 11px; height: 11px; }
+
+    /* —— HERO (static, not carousel) —— */
+    .hero-sec { padding-bottom: 1.5rem; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #111;
+      aspect-ratio: 16 / 10;
+      min-height: 280px;
+    }
+    @media (min-width: 768px) { .hero { min-height: 360px; aspect-ratio: 16 / 9; } }
+    .hero__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 66% 28%;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.55), rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.08));
+    }
+    .hero__content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 1.5rem 2.75rem;
+      z-index: 2;
+      max-width: 62%;
+    }
+    @media (min-width: 768px) { .hero__content { padding: 2.5rem 2.5rem 3rem; } }
+    .hero__eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.68);
+    }
+    .hero__title {
+      margin-top: 0.65rem;
+      font-size: clamp(1.6rem, 5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.08;
+    }
+    .hero__copy {
+      margin-top: 0.75rem;
+      font-size: 11px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.75);
+      max-width: 20rem;
+    }
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      width: fit-content;
+      margin-top: 1.25rem;
+      padding: 0.68rem 1.3rem;
+      border-radius: 999px;
+      background: var(--black);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .hero__cta svg { width: 12px; height: 12px; }
+    .hero__glass {
+      position: absolute;
+      right: 1rem;
+      bottom: 2.5rem;
+      z-index: 3;
+      width: 11rem;
+      padding: 1rem;
+      border-radius: 1.2rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(40,40,40,0.38);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      color: #fff;
+    }
+    @media (min-width: 640px) {
+      .hero__glass { right: 1.75rem; bottom: 3rem; width: 12rem; }
+    }
+    .hero__glass-label {
+      font-size: 8px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.5;
+    }
+    .hero__glass-year {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 1.6rem;
+      font-weight: 300;
+    }
+    .hero__glass-sub {
+      margin-top: 0.25rem;
+      font-size: 8px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.78);
+    }
+    .hero__glass-icon {
+      display: inline-flex;
+      margin-top: 0.7rem;
+      width: 24px;
+      height: 24px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.28);
+    }
+    .hero__glass-icon svg { width: 11px; height: 11px; }
+    .hero__dots {
+      position: absolute;
+      left: 50%;
+      bottom: 1rem;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.4rem;
+      z-index: 3;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.3);
+    }
+    .dot.is-active { background: rgba(255,255,255,0.92); }
+
+    /* Categories */
+    .cat-sec { padding-bottom: 2rem; }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    @media (min-width: 768px) { .cat-grid { grid-template-columns: repeat(4, 1fr); gap: 1rem; } }
+    .cat-card {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 1.5rem;
+      aspect-ratio: 4/5;
+      background: #111;
+    }
+    .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s; }
+    .cat-card:hover img { transform: scale(1.03); }
+    .cat-card__grad {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.62), transparent 55%);
+    }
+    .cat-card__foot {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem;
+    }
+    .cat-card__title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .cat-card__arrow {
+      width: 26px; height: 26px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cat-card__arrow svg { width: 10px; height: 10px; }
+
+    /* New Arrivals */
+    .arrivals-sec { padding-bottom: 2.5rem; }
+    .arrivals-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+    @media (min-width: 768px) { .arrivals-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1100px) { .arrivals-grid { grid-template-columns: repeat(5, 1fr); } }
+    .product-card {
+      position: relative;
+      border-radius: 1.5rem;
+      background: var(--cream-card);
+      padding: 0.55rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+    .product-card__img {
+      overflow: hidden;
+      border-radius: 1.1rem;
+      background: var(--cream-img);
+    }
+    .product-card__img img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+    .product-card__body { padding: 0.6rem 0.2rem 2rem; }
+    .product-card__name {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .product-card__cat {
+      margin-top: 0.2rem;
+      font-size: 9px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .product-card__price { margin-top: 0.35rem; font-size: 13px; font-weight: 500; }
+    .product-card__add {
+      position: absolute;
+      right: 0.8rem;
+      bottom: 0.8rem;
+      width: 28px; height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.14);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-card__add svg { width: 12px; height: 12px; }
+
+    /* —— SALE STACKED CAROUSEL —— */
+    .sale-carousel-sec { padding-bottom: 2.5rem; }
+    .sale-carousel {
+      position: relative;
+      height: clamp(280px, 52vw, 420px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+    }
+    .sale-carousel__deck {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sale-card {
+      position: absolute;
+      width: min(92%, 680px);
+      height: 88%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #0a0a0a;
+      color: #fff;
+      transition: transform 0.55s cubic-bezier(0.4,0,0.2,1), opacity 0.55s, filter 0.55s;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+      cursor: grab;
+      user-select: none;
+    }
+    .sale-card:active { cursor: grabbing; }
+    .sale-card__photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 66% 28%;
+    }
+    .sale-card__shade {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 45%, rgba(0,0,0,0.25), rgba(0,0,0,0.72));
+      z-index: 1;
+    }
+    .sale-card__center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.5rem 3rem;
+      z-index: 2;
+    }
+    .sale-card__eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.62);
+    }
+    .sale-card__title {
+      margin-top: 0.5rem;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      font-weight: 200;
+      line-height: 0.92;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .sale-card__subtitle {
+      margin-top: 0.3rem;
+      font-size: clamp(1.2rem, 3.5vw, 2rem);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .sale-card__note {
+      margin-top: 0.75rem;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+    .sale-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1.25rem;
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .sale-card__cta svg { width: 12px; height: 12px; }
+    .sale-glass {
+      position: absolute;
+      z-index: 3;
+      padding: 0.85rem 0.95rem;
+      border-radius: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      max-width: 9rem;
+    }
+    .sale-glass p {
+      font-size: 8px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+    .sale-glass--l { left: 1rem; bottom: 3.5rem; }
+    .sale-glass--r { right: 1rem; bottom: 3.5rem; text-align: right; }
+    .sale-glass__icon {
+      display: inline-flex;
+      margin-top: 0.5rem;
+      width: 20px; height: 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      align-items: center;
+      justify-content: center;
+    }
+    .sale-glass__icon svg { width: 9px; height: 9px; }
+    .sale-glass__mini {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.28rem;
+      margin-top: 0.5rem;
+    }
+    .sale-glass__mini span {
+      width: 14px; height: 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+
+    /* stacked positions */
+    .sale-card[data-pos="0"] {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+      z-index: 3;
+      filter: brightness(1);
+    }
+    .sale-card[data-pos="-1"] {
+      transform: translateX(-14%) scale(0.88);
+      opacity: 0.45;
+      z-index: 1;
+      filter: brightness(0.55);
+    }
+    .sale-card[data-pos="1"] {
+      transform: translateX(14%) scale(0.88);
+      opacity: 0.45;
+      z-index: 1;
+      filter: brightness(0.55);
+    }
+    .sale-card[data-pos="-2"],
+    .sale-card[data-pos="2"] {
+      transform: translateX(0) scale(0.75);
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .sale-carousel__dots {
+      position: absolute;
+      left: 50%;
+      bottom: 0.5rem;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.4rem;
+      z-index: 10;
+    }
+    .sale-carousel__dot {
+      width: 6px; height: 6px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.2);
+      padding: 0;
+    }
+    .sale-carousel__dot.is-active { background: rgba(0,0,0,0.65); }
+
+    /* Lookbook (static) */
+    .lookbook-sec { padding-bottom: 2.5rem; }
+    .lookbook {
+      display: grid;
+      grid-template-columns: 1fr;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #0a0a0a;
+      color: #fff;
+    }
+    @media (min-width: 900px) {
+      .lookbook {
+        grid-template-columns: 0.92fr 1.08fr;
+        min-height: 280px;
+      }
+    }
+    .lookbook__copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 1.75rem 2.25rem;
+    }
+    @media (min-width: 900px) {
+      .lookbook__copy { padding: 2.25rem 2rem 2.25rem 2.25rem; }
+    }
+    .lookbook__eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+    .lookbook__title {
+      margin-top: 0.55rem;
+      font-size: clamp(1.85rem, 4.2vw, 2.65rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+    .lookbook__text {
+      margin-top: 0.85rem;
+      font-size: 11px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.72);
+      max-width: 24rem;
+    }
+    .lookbook__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      width: fit-content;
+      margin-top: 1.35rem;
+      padding: 0.72rem 1.35rem;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .lookbook__cta:hover { opacity: 0.9; }
+    .lookbook__cta svg { width: 12px; height: 12px; }
+    .lookbook__media {
+      position: relative;
+      min-height: 240px;
+      background: #1a1a1a;
+    }
+    @media (min-width: 900px) {
+      .lookbook__media { min-height: 100%; }
+    }
+    .lookbook__media img {
+      width: 100%;
+      height: 100%;
+      min-height: 240px;
+      object-fit: cover;
+      object-position: 66% 28%;
+    }
+
+    /* Instagram — single row of 7 portraits */
+    .insta-sec { padding-bottom: 2.5rem; }
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 0.55rem;
+    }
+    @media (max-width: 900px) {
+      .insta-grid {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 0.25rem;
+        -webkit-overflow-scrolling: touch;
+      }
+      .insta-item {
+        flex: 0 0 88px;
+        scroll-snap-align: start;
+      }
+    }
+    .insta-item {
+      overflow: hidden;
+      border-radius: 0.85rem;
+      background: var(--cream-img);
+      aspect-ratio: 3 / 4;
+    }
+    .insta-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Trust */
+    .trust-sec {
+      padding-bottom: 5.5rem;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    @media (min-width: 768px) {
+      .trust-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+      }
+    }
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+    }
+    .trust-icon {
+      flex-shrink: 0;
+      padding: 0.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.65);
+      margin-top: 1px;
+    }
+    .trust-icon svg { width: 14px; height: 14px; display: block; }
+    .trust-title {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+    .trust-sub {
+      margin-top: 0.15rem;
+      font-size: 9px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* Bottom nav — full-width sticky bar */
+    .bottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      background: #fff;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      border-radius: 1.35rem 1.35rem 0 0;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.06);
+      padding: 0.55rem 1.25rem calc(0.55rem + env(safe-area-inset-bottom));
+    }
+    .bottom-nav__inner {
+      max-width: 32rem;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto 1fr 1fr;
+      align-items: end;
+      gap: 0.25rem;
+    }
+    .bottom-nav__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 7px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.15rem;
+    }
+    .bottom-nav__item svg { width: 18px; height: 18px; }
+    .bottom-nav__item--active { color: var(--text); }
+    .bottom-nav__fab { margin-top: -1.65rem; }
+    .bottom-nav__fab a {
+      display: flex;
+      width: 52px;
+      height: 52px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--black);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .wish-wrap { position: relative; }
+    .wish-wrap .badge { top: -3px; right: 4px; }
+  </style>
+</head>
+<body>
+
+  <div class="announce">
+    <p>Free Shipping on Orders Above ₹1499</p>
+  </div>
+
+  <header class="header">
+    <div class="wrap header__row">
+      <div class="header__left">
+        <button type="button" class="menu-btn" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+        </button>
+        <nav class="nav-links">
+          <a href="#shop">Shop</a>
+          <a href="#collections">Collections</a>
+          <a href="#new-arrivals">New Arrivals</a>
+        </nav>
+      </div>
+      <a href="/" class="logo">
+        <span class="logo__f">F</span>
+        <span class="logo__text">FITSS</span>
+      </a>
+      <div class="header__right">
+        <a href="#search" class="icon-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+        </a>
+        <a href="#account" class="icon-btn" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/><path d="M4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+        </a>
+        <a href="#cart" class="icon-btn" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/></svg>
+          <span class="badge">2</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO — static -->
+    <section class="hero-sec">
+      <div class="wrap">
+        <div class="hero">
+          <img class="hero__img" src="assests/hero.png" alt="FITSS model">
+          <div class="hero__overlay"></div>
+          <div class="hero__content">
+            <p class="hero__eyebrow">New Drop '24</p>
+            <h1 class="hero__title">Elevate Your Style</h1>
+            <p class="hero__copy">Minimal fits. Maximum impact. Designed for the modern generation.</p>
+            <a href="#shop" class="hero__cta">
+              Shop Now
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </a>
+          </div>
+          <a href="#collections" class="hero__glass">
+            <span class="hero__glass-label">Summer Collection</span>
+            <span class="hero__glass-year">'24</span>
+            <span class="hero__glass-sub">Limited Drop</span>
+            <span class="hero__glass-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </a>
+          <div class="hero__dots" aria-hidden="true">
+            <span class="dot is-active"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Categories -->
+    <section class="cat-sec" id="shop">
+      <div class="wrap">
+        <div class="cat-grid">
+          <a href="#" class="cat-card">
+            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&h=1000&fit=crop&q=80" alt="Hoodies">
+            <div class="cat-card__grad"></div>
+            <div class="cat-card__foot"><span class="cat-card__title">Hoodies</span><span class="cat-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></span></div>
+          </a>
+          <a href="#" class="cat-card">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=1000&fit=crop&q=80" alt="T-Shirts">
+            <div class="cat-card__grad"></div>
+            <div class="cat-card__foot"><span class="cat-card__title">T-Shirts</span><span class="cat-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></span></div>
+          </a>
+          <a href="#" class="cat-card">
+            <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800&h=1000&fit=crop&q=80" alt="Cargo">
+            <div class="cat-card__grad"></div>
+            <div class="cat-card__foot"><span class="cat-card__title">Cargo Pants</span><span class="cat-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></span></div>
+          </a>
+          <a href="#" class="cat-card">
+            <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=800&h=1000&fit=crop&q=80" alt="Accessories">
+            <div class="cat-card__grad"></div>
+            <div class="cat-card__foot"><span class="cat-card__title">Accessories</span><span class="cat-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. New Arrivals -->
+    <section class="arrivals-sec" id="new-arrivals">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>New Arrivals</h2>
+          <a href="#shop" class="sec-link">View All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></a>
+        </div>
+        <div class="arrivals-grid">
+          <article class="product-card">
+            <div class="product-card__img"><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&h=1000&fit=crop&q=80" alt="Core Oversized Tee"></div>
+            <div class="product-card__body"><h3 class="product-card__name">Core Oversized Tee</h3><p class="product-card__cat">Jet Black</p><p class="product-card__price">₹999</p></div>
+            <button type="button" class="product-card__add" aria-label="Add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </article>
+          <article class="product-card">
+            <div class="product-card__img"><img src="https://images.unsplash.com/photo-1509941943102-10c232535736?w=800&h=1000&fit=crop&q=80" alt="Shadow Hoodie"></div>
+            <div class="product-card__body"><h3 class="product-card__name">Shadow Hoodie</h3><p class="product-card__cat">Stone Grey</p><p class="product-card__price">₹1,799</p></div>
+            <button type="button" class="product-card__add" aria-label="Add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </article>
+          <article class="product-card">
+            <div class="product-card__img"><img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800&h=1000&fit=crop&q=80" alt="Utility Cargo"></div>
+            <div class="product-card__body"><h3 class="product-card__name">Utility Cargo</h3><p class="product-card__cat">Graphite Black</p><p class="product-card__price">₹1,599</p></div>
+            <button type="button" class="product-card__add" aria-label="Add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </article>
+          <article class="product-card">
+            <div class="product-card__img"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&h=1000&fit=crop&q=80" alt="Minimal Logo Tee"></div>
+            <div class="product-card__body"><h3 class="product-card__name">Minimal Logo Tee</h3><p class="product-card__cat">Warm Sand</p><p class="product-card__price">₹899</p></div>
+            <button type="button" class="product-card__add" aria-label="Add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </article>
+          <article class="product-card">
+            <div class="product-card__img"><img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=800&h=1000&fit=crop&q=80" alt="Cap"></div>
+            <div class="product-card__body"><h3 class="product-card__name">Minimal Logo Cap</h3><p class="product-card__cat">Jet Black</p><p class="product-card__price">₹799</p></div>
+            <button type="button" class="product-card__add" aria-label="Add"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SALE STACKED CAROUSEL (not hero) -->
+    <section class="sale-carousel-sec" id="sale">
+      <div class="wrap">
+        <div class="sale-carousel" id="sale-carousel">
+          <div class="sale-carousel__deck" id="sale-deck">
+
+            <article class="sale-card" data-index="0">
+              <img class="sale-card__photo" src="assests/hero.png" alt="Sale">
+              <div class="sale-card__shade"></div>
+              <div class="sale-card__center">
+                <p class="sale-card__eyebrow">End of Season</p>
+                <h2 class="sale-card__title">Sale</h2>
+                <p class="sale-card__subtitle">Up to 50% Off</p>
+                <p class="sale-card__note">Limited Time Only</p>
+                <a href="#shop" class="sale-card__cta">Shop the Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></a>
+              </div>
+              <div class="sale-glass sale-glass--l"><p>Biggest Sale<br>of the Year</p><span class="sale-glass__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></div>
+              <div class="sale-glass sale-glass--r"><p>On All<br>Collections</p><div class="sale-glass__mini"><span></span><span></span><span></span></div></div>
+            </article>
+
+            <article class="sale-card" data-index="1">
+              <img class="sale-card__photo" src="assests/hero.png" alt="Winter Sale">
+              <div class="sale-card__shade"></div>
+              <div class="sale-card__center">
+                <p class="sale-card__eyebrow">Winter Drop</p>
+                <h2 class="sale-card__title">40% Off</h2>
+                <p class="sale-card__subtitle">Selected Styles</p>
+                <p class="sale-card__note">Ends This Week</p>
+                <a href="#shop" class="sale-card__cta">Shop Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></a>
+              </div>
+            </article>
+
+            <article class="sale-card" data-index="2">
+              <img class="sale-card__photo" src="assests/hero.png" alt="Bundle Deal">
+              <div class="sale-card__shade"></div>
+              <div class="sale-card__center">
+                <p class="sale-card__eyebrow">Bundle &amp; Save</p>
+                <h2 class="sale-card__title">2 For 1</h2>
+                <p class="sale-card__subtitle">On All Tees</p>
+                <p class="sale-card__note">Online Exclusive</p>
+                <a href="#shop" class="sale-card__cta">Grab the Deal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></a>
+              </div>
+            </article>
+
+          </div>
+          <div class="sale-carousel__dots" id="sale-dots">
+            <button type="button" class="sale-carousel__dot is-active" data-i="0" aria-label="Sale slide 1"></button>
+            <button type="button" class="sale-carousel__dot" data-i="1" aria-label="Sale slide 2"></button>
+            <button type="button" class="sale-carousel__dot" data-i="2" aria-label="Sale slide 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Lookbook — static -->
+    <section class="lookbook-sec" id="collections">
+      <div class="wrap">
+        <div class="lookbook">
+          <div class="lookbook__copy">
+            <p class="lookbook__eyebrow">Lookbook '24</p>
+            <h2 class="lookbook__title">Summer Edit</h2>
+            <p class="lookbook__text">Clean fits for a strong and fearless identity. Curated looks for everyday motion.</p>
+            <a href="#" class="lookbook__cta">
+              Explore Lookbook
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+            </a>
+          </div>
+          <div class="lookbook__media">
+            <img src="assests/hero.png" alt="Summer Edit lookbook">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Instagram -->
+    <section class="insta-sec">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>@FITSS.STYLE</h2>
+          <a href="https://instagram.com" class="sec-link" target="_blank" rel="noopener">View on Instagram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg></a>
+        </div>
+        <div class="insta-grid">
+          <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=400&h=520&fit=crop&q=80" alt="Black tee"></a>
+          <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1509941943102-10c232535736?w=400&h=520&fit=crop&q=80" alt="Hoodie back"></a>
+          <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=520&fit=crop&q=80" alt="White tee"></a>
+          <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=520&fit=crop&q=80" alt="Cap"></a>
+          <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=520&fit=crop&q=80" alt="Black hoodie"></a>
+          <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=520&fit=crop&q=80" alt="Logo tee detail"></a>
+          <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=520&fit=crop&q=80" alt="Grey tee"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Trust -->
+    <section class="trust-sec">
+      <div class="wrap">
+        <div class="trust-grid">
+          <div class="trust-item"><span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 12.75 11.25 15 15 9.75"/><path d="M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg></span><div><p class="trust-title">Premium Quality</p><p class="trust-sub">Built to last</p></div></div>
+          <div class="trust-item"><span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9H9.75a9 9 0 0 0-9 9v2.25c0 .621.504 1.125 1.125 1.125H8.25Z"/></svg></span><div><p class="trust-title">Free Shipping</p><p class="trust-sub">On orders above ₹1499</p></div></div>
+          <div class="trust-item"><span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M16.023 9.348h4.992v-.001"/><path d="M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7"/><path d="M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182"/></svg></span><div><p class="trust-title">Easy Returns</p><p class="trust-sub">14 day return policy</p></div></div>
+          <div class="trust-item"><span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg></span><div><p class="trust-title">Secure Payment</p><p class="trust-sub">100% protected checkout</p></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Bottom navigation">
+    <div class="bottom-nav__inner">
+      <a href="#shop" class="bottom-nav__item bottom-nav__item--active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>Shop
+      </a>
+      <a href="#collections" class="bottom-nav__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Collections
+      </a>
+      <div class="bottom-nav__fab"><a href="/" aria-label="Home">F</a></div>
+      <a href="#wishlist" class="bottom-nav__item wish-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+        <span class="badge">2</span>Wishlist
+      </a>
+      <a href="#account" class="bottom-nav__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-4 3.5-6 7-6s7 2 7 6"/></svg>Account
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    (function () {
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.sale-card'));
+      var dots = document.querySelectorAll('.sale-carousel__dot');
+      var total = cards.length;
+      var current = 0;
+      var timer;
+      var startX = 0;
+
+      function relPos(i, active) {
+        var d = i - active;
+        if (d > total / 2) d -= total;
+        if (d < -total / 2) d += total;
+        return d;
+      }
+
+      function render() {
+        cards.forEach(function (card, i) {
+          var pos = relPos(i, current);
+          if (pos > 1) pos = 2;
+          if (pos < -1) pos = -2;
+          card.setAttribute('data-pos', String(pos));
+        });
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle('is-active', i === current);
+        });
+      }
+
+      function go(n) {
+        current = (n + total) % total;
+        render();
+      }
+
+      function next() { go(current + 1); }
+      function prev() { go(current - 1); }
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          go(parseInt(dot.dataset.i, 10));
+          resetAutoplay();
+        });
+      });
+
+      var deck = document.getElementById('sale-deck');
+      deck.addEventListener('click', function (e) {
+        var card = e.target.closest('.sale-card');
+        if (!card) return;
+        var idx = parseInt(card.dataset.index, 10);
+        if (idx !== current) go(idx);
+      });
+
+      deck.addEventListener('touchstart', function (e) {
+        startX = e.changedTouches[0].screenX;
+        clearInterval(timer);
+      }, { passive: true });
+
+      deck.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].screenX - startX;
+        if (dx < -40) next();
+        else if (dx > 40) prev();
+        resetAutoplay();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { prev(); resetAutoplay(); }
+        if (e.key === 'ArrowRight') { next(); resetAutoplay(); }
+      });
+
+      function resetAutoplay() {
+        clearInterval(timer);
+        timer = setInterval(next, 6000);
+      }
+
+      render();
+      resetAutoplay();
+    })();
+  </script>
+</body>
+</html>

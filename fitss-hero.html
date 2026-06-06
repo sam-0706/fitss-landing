@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FITSS — Hero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --off-white: #f5f2ea;
+      --charcoal: #1a1a18;
+      --cream: #e8e5dc;
+      --max-w: 80rem;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: var(--cream);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    /* —— First screen —— */
+    .first-screen {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      height: 100dvh;
+      background: var(--cream);
+    }
+
+    .first-screen__main {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* Announcement */
+    .announce {
+      flex-shrink: 0;
+      background: #151515;
+      padding: 0.375rem 1rem;
+      text-align: center;
+    }
+    .announce p {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(245, 242, 234, 0.9);
+    }
+    @media (min-width: 640px) {
+      .announce p { font-size: 10px; }
+    }
+
+    /* Nav */
+    .nav-header {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 20;
+    }
+    .nav-header__inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      color: var(--off-white);
+    }
+    @media (min-width: 640px) {
+      .nav-header__inner { padding: 1rem 1.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .nav-header__inner { padding: 1rem 2rem; }
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+    }
+    .nav-links a {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245, 242, 234, 0.88);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+      color: var(--off-white);
+    }
+    .logo__f {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .logo__text {
+      margin-top: 2px;
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .nav-actions { gap: 1rem; }
+    }
+    .icon-btn {
+      display: inline-flex;
+      padding: 0.25rem;
+      border-radius: 9999px;
+      color: rgba(245, 242, 234, 0.9);
+      transition: color 0.2s;
+    }
+    .icon-btn:hover { color: #fff; }
+    .icon-btn svg { width: 15px; height: 15px; }
+    .icon-btn--user { display: none; }
+    @media (min-width: 640px) {
+      .icon-btn--user { display: inline-flex; }
+    }
+
+    /* Hero */
+    .hero {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: var(--charcoal);
+    }
+    .hero__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 66% 28%;
+    }
+    .hero__overlay-r {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(17,17,17,0.7), rgba(17,17,17,0.35) 50%, rgba(17,17,17,0.15));
+    }
+    .hero__overlay-t {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(17,17,17,0.5), transparent 45%);
+    }
+
+    .hero__grid {
+      position: absolute;
+      inset: 0;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      padding: 6rem 1rem 7rem;
+    }
+    @media (min-width: 640px) {
+      .hero__grid { padding: 6rem 1.5rem 7rem; }
+    }
+    @media (min-width: 1024px) {
+      .hero__grid {
+        grid-template-columns: 1fr 1fr;
+        padding: 7rem 2rem 8rem;
+      }
+    }
+
+    .hero__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero__eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(245, 242, 234, 0.7);
+    }
+    .hero__title {
+      margin-top: 0.5rem;
+      font-size: clamp(3.75rem, 12vw, 7.5rem);
+      font-weight: 200;
+      line-height: 0.95;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--off-white);
+    }
+    .hero__subtitle {
+      margin-top: 0.5rem;
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--off-white);
+    }
+    .hero__copy {
+      margin-top: 1.5rem;
+      max-width: 20rem;
+      font-size: 12px;
+      line-height: 1.625;
+      text-transform: uppercase;
+      color: rgba(245, 242, 234, 0.76);
+    }
+    .hero__cta {
+      display: inline-flex;
+      width: fit-content;
+      margin-top: 1.5rem;
+      padding: 0.625rem 1.25rem;
+      border-radius: 9999px;
+      background: #111;
+      color: var(--off-white);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+    .hero__cta:hover { background: #000; }
+
+    /* Slide indicator */
+    .hero__slides {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      justify-self: end;
+      align-self: center;
+      padding-right: 0.75rem;
+      color: rgba(245, 242, 234, 0.7);
+      pointer-events: none;
+    }
+    @media (min-width: 1024px) {
+      .hero__slides { display: flex; }
+    }
+    .hero__slides-num {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+    }
+    .hero__slides-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background: rgba(245, 242, 234, 0.7);
+    }
+    .hero__slides-dot--dim {
+      background: rgba(245, 242, 234, 0.3);
+    }
+
+    /* New Drop card */
+    .hero__drop {
+      position: absolute;
+      right: 1rem;
+      bottom: 6rem;
+      z-index: 10;
+      width: 13rem;
+      padding: 1.25rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(42,42,42,0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: var(--off-white);
+      transition: background 0.2s;
+    }
+    @media (min-width: 640px) {
+      .hero__drop { right: 2rem; bottom: 7rem; }
+    }
+    @media (min-width: 1024px) {
+      .hero__drop { bottom: 8rem; }
+    }
+    .hero__drop:hover { background: rgba(42,42,42,0.55); }
+    .hero__drop-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245, 242, 234, 0.7);
+    }
+    .hero__drop-year {
+      margin-top: 0.25rem;
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+    .hero__drop-sub {
+      margin-top: 0.5rem;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245, 242, 234, 0.8);
+    }
+    .hero__drop-icon {
+      display: inline-flex;
+      margin-top: 1rem;
+      width: 28px;
+      height: 28px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(245, 242, 234, 0.9);
+    }
+    .hero__drop-icon svg { width: 16px; height: 16px; }
+
+    /* Trust strip */
+    .trust {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      background: rgba(26, 26, 24, 0.45);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      padding: 0.875rem 1rem;
+    }
+    @media (min-width: 640px) {
+      .trust { padding: 0.875rem 1.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .trust { padding: 0.875rem 2rem; }
+    }
+    .trust__grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 1rem;
+      row-gap: 0.75rem;
+    }
+    @media (min-width: 768px) {
+      .trust__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+      }
+    }
+    .trust__item {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      color: var(--off-white);
+    }
+    .trust__icon {
+      flex-shrink: 0;
+      padding: 0.375rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.1);
+    }
+    .trust__icon svg {
+      width: 14px;
+      height: 14px;
+      color: rgba(245, 242, 234, 0.95);
+      display: block;
+    }
+    .trust__title {
+      font-size: 9px;
+      line-height: 1.25;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .trust__sub {
+      font-size: 9px;
+      line-height: 1.25;
+      color: rgba(245, 242, 234, 0.65);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="first-screen">
+    <div class="announce">
+      <p>Free Shipping on Orders Above ₹999</p>
+    </div>
+
+    <div class="first-screen__main">
+      <!-- Nav -->
+      <header class="nav-header">
+        <div class="nav-header__inner">
+          <div class="nav-left">
+            <nav class="nav-links" aria-label="Primary">
+              <a href="#shop">Shop</a>
+              <a href="#collections">Collections</a>
+              <a href="#new-arrivals">New Arrivals</a>
+              <a href="#about">About</a>
+            </nav>
+          </div>
+
+          <a href="/" class="logo">
+            <span class="logo__f">F</span>
+            <span class="logo__text">FITSS</span>
+          </a>
+
+          <div class="nav-actions">
+            <a href="#shop" class="icon-btn" aria-label="Search products">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            </a>
+            <a href="#contact" class="icon-btn icon-btn--user" aria-label="Account">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-4 3.5-6 7-6s7 2 7 6"/></svg>
+            </a>
+            <a href="#cart" class="icon-btn" aria-label="Cart">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h15l-1.5 9H7.5L6 7Z"/><path d="M6 7 5 3H2"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></svg>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero -->
+      <section class="hero">
+        <img class="hero__img" src="assests/hero.png" alt="FITSS model">
+        <div class="hero__overlay-r"></div>
+        <div class="hero__overlay-t"></div>
+
+        <div class="hero__grid">
+          <div class="hero__content">
+            <p class="hero__eyebrow">End of Season</p>
+            <h1 class="hero__title">Sale</h1>
+            <p class="hero__subtitle">Up to 50% Off</p>
+            <p class="hero__copy">
+              Minimal fits. Maximum impact.<br>
+              Designed for the modern generation.
+            </p>
+            <a href="#shop" class="hero__cta">Shop Now</a>
+          </div>
+
+          <div class="hero__slides" aria-hidden="true">
+            <span class="hero__slides-num">01</span>
+            <span class="hero__slides-dot"></span>
+            <span class="hero__slides-dot hero__slides-dot--dim"></span>
+            <span class="hero__slides-dot hero__slides-dot--dim"></span>
+          </div>
+        </div>
+
+        <a href="#collection" class="hero__drop">
+          <p class="hero__drop-label">New Drop</p>
+          <p class="hero__drop-year">'24</p>
+          <p class="hero__drop-sub">Summer Collection</p>
+          <span class="hero__drop-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </a>
+
+        <!-- Trust strip -->
+        <div class="trust">
+          <div class="trust__grid">
+            <div class="trust__item">
+              <span class="trust__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.5 0 10-4.5 10-10V5l-10-3L2 5v7c0 5.5 4.5 10 10 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+              </span>
+              <div>
+                <p class="trust__title">Premium Quality</p>
+                <p class="trust__sub">Built to last</p>
+              </div>
+            </div>
+            <div class="trust__item">
+              <span class="trust__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+              </span>
+              <div>
+                <p class="trust__title">Free Shipping</p>
+                <p class="trust__sub">On orders above ₹999</p>
+              </div>
+            </div>
+            <div class="trust__item">
+              <span class="trust__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
+              </span>
+              <div>
+                <p class="trust__title">Easy Returns</p>
+                <p class="trust__sub">14-day return policy</p>
+              </div>
+            </div>
+            <div class="trust__item">
+              <span class="trust__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
+              </span>
+              <div>
+                <p class="trust__title">Secure Payment</p>
+                <p class="trust__sub">100% protected checkout</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>
